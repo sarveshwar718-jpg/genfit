@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>GENFIT — Couture Collection</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -560,23 +560,102 @@
   @keyframes popIn { from { opacity:0; transform:scale(0.4); } to { opacity:1; transform:scale(1); } }
   @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(201,169,110,0.4); } 50% { box-shadow:0 0 0 10px rgba(201,169,110,0); } }
 
+  /* ── MOBILE FIRST (phone default) ── */
   @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
+    nav { padding: 12px 16px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
+    .nav-logo { font-size: 22px; letter-spacing: 5px; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; height: auto; min-height: 100svh; }
     .hero-image { display: none; }
-    .hero-text { padding: 60px 24px; }
-    .collection { padding: 80px 24px; }
-    .features { padding: 60px 24px; }
-    .features-grid { grid-template-columns: 1fr 1fr; }
-    footer { padding: 60px 24px 32px; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .checkout-page { padding: 80px 24px 40px; }
-    .checkout-grid { grid-template-columns: 1fr; }
-    .order-summary-box { position: static; }
-    .modal { grid-template-columns: 1fr; }
+    .hero-text { padding: 100px 20px 48px; }
+    .hero-title { font-size: clamp(36px, 9vw, 56px); }
+    .hero-sub { font-size: 12px; margin-bottom: 32px; }
+    .hero-cta { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-outline { padding: 14px 28px; text-align: center; }
+
+    /* Collection */
+    .collection { padding: 56px 16px 64px; }
+    .section-header { margin-bottom: 40px; }
+    .section-title { font-size: clamp(28px, 7vw, 40px); }
+    .filter-bar { gap: 8px; margin-bottom: 32px; }
+    .filter-btn { padding: 6px 14px; font-size: 9px; letter-spacing: 2px; }
+
+    /* Product grid — 2 small cards per row */
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .product-image-inner { font-size: 48px; }
+    .product-info { padding: 12px; }
+    .product-name { font-size: 15px; margin-bottom: 3px; }
+    .product-subtitle { font-size: 9px; margin-bottom: 10px; }
+    .product-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .product-price { font-size: 16px; }
+    .product-price .old { font-size: 12px; }
+    .add-cart-btn { width: 100%; padding: 8px 10px; font-size: 8px; letter-spacing: 1.5px; text-align: center; }
+    .product-badge-tag { font-size: 7px; padding: 3px 7px; }
+    .wishlist-btn { opacity: 1; width: 30px; height: 30px; font-size: 13px; }
+
+    /* Modal */
+    .modal { grid-template-columns: 1fr; max-width: 100%; border-radius: 0; }
     .modal-image { display: none; }
+    .modal-body { padding: 32px 20px 24px; }
+    .modal-name { font-size: 26px; }
+    .modal-price { font-size: 22px; }
+    .modal-desc { font-size: 12px; }
+    .size-opt { width: 38px; height: 38px; font-size: 11px; }
+
+    /* Cart */
     .cart-panel { width: 100%; }
+    .cart-header { padding: 20px 20px; }
+    .cart-title { font-size: 22px; }
+    .cart-items { padding: 16px 20px; }
+    .cart-item { grid-template-columns: 56px 1fr auto; gap: 12px; padding: 14px 0; }
+    .cart-item-img { width: 56px; height: 70px; font-size: 22px; }
+    .cart-item-name { font-size: 15px; }
+    .cart-item-price { font-size: 15px; }
+    .cart-footer { padding: 16px 20px; }
+
+    /* Checkout */
+    .checkout-page { padding: 70px 16px 40px; }
+    .checkout-header { margin-bottom: 32px; }
+    .checkout-grid { grid-template-columns: 1fr; }
+    .order-summary-box { position: static; padding: 24px 16px; }
+    .delivery-options { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .checkout-steps { gap: 4px; }
+    .checkout-step { font-size: 9px; letter-spacing: 1px; }
+
+    /* Features */
+    .features { padding: 48px 20px; }
+    .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .feature-item { padding: 20px 12px; }
+    .feature-icon { font-size: 24px; margin-bottom: 12px; }
+    .feature-name { font-size: 16px; }
+    .feature-desc { font-size: 10px; }
+
+    /* Footer */
+    footer { padding: 48px 20px 28px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer-brand { grid-column: 1 / -1; }
+
+    /* Success */
+    .success-title { font-size: 36px; }
+    .delivery-track { padding: 28px 20px; }
+
+    /* Toast */
+    .toast { width: calc(100% - 32px); left: 16px; transform: translateX(0) translateY(80px); bottom: 20px; }
+    .toast.show { transform: translateX(0) translateY(0); }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 380px) {
+    .product-grid { gap: 8px; }
+    .product-info { padding: 10px; }
+    .product-name { font-size: 13px; }
+    .hero-title { font-size: 32px; }
   }
 </style>
 </head>
@@ -1246,7 +1325,9 @@ function formatExpiry(el) {
 
 // ── NAV SCROLL ──
 window.addEventListener('scroll', () => {
-  document.getElementById('navbar').style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
+  const isMobile = window.innerWidth <= 900;
+  const h = isMobile ? (window.scrollY > 50 ? '10px 16px' : '12px 16px') : (window.scrollY > 50 ? '12px 60px' : '20px 60px');
+  document.getElementById('navbar').style.padding = h;
 });
 </script>
 </body>
